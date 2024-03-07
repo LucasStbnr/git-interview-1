@@ -2,12 +2,16 @@
 
 const VAT_RATE = 0.2;
 
+function round2(value) {
+  return Math.round(value * 100) / 100;
+}
+
 function applyVat(amountHt) {
-  return amountHt * (1 + VAT_RATE);
+  return round2(amountHt * (1 + VAT_RATE));
 }
 
 function applyDiscount(amount, discountRate) {
   return amount - amount * discountRate;
 }
 
-module.exports = { VAT_RATE, applyVat, applyDiscount };
+module.exports = { VAT_RATE, round2, applyVat, applyDiscount };
