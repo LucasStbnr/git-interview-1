@@ -7,6 +7,10 @@ const DEMO_CART = [
   { sku: 'MUG-01', label: 'Mug', unitPrice: 12, quantity: 5 },
 ];
 
+function findItem(items, sku) {
+  return items.find((item) => item.sku === sku) || null;
+}
+
 function total(items, discountRate) {
   let sum = 0;
   for (const item of items) {
@@ -15,4 +19,4 @@ function total(items, discountRate) {
   return applyVat(applyDiscount(sum, discountRate || 0));
 }
 
-module.exports = { DEMO_CART, total };
+module.exports = { DEMO_CART, findItem, total };
