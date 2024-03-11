@@ -21,4 +21,8 @@ if (command === 'total') {
   });
 } else if (command === 'help') {
   console.log(HELP);
+} else {
+  console.error('Commande inconnue : ' + command);
+  console.error(HELP);
+  process.exit(1);
 }
