@@ -11,12 +11,16 @@ function findItem(items, sku) {
   return items.find((item) => item.sku === sku) || null;
 }
 
-function total(items, discountRate) {
+function subtotal(items) {
   let sum = 0;
   for (const item of items) {
     sum += item.unitPrice * item.quantity;
   }
-  return applyVat(applyDiscount(sum, discountRate || 0));
+  return sum;
 }
 
-module.exports = { DEMO_CART, findItem, total };
+function total(items, discountRate) {
+  return applyVat(applyDiscount(subtotal(items), discountRate || 0));
+}
+
+module.exports = { DEMO_CART, findItem, subtotal, total };
