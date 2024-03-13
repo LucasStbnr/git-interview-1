@@ -1,6 +1,6 @@
 'use strict';
 
-const VAT_RATE = 0.2;
+const VAT_RATE = 0.196;
 
 function round2(value) {
   return Math.round(value * 100) / 100;
