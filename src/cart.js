@@ -11,6 +11,10 @@ function findItem(items, sku) {
   return items.find((item) => item.sku === sku) || null;
 }
 
+function itemCount(items) {
+  return items.reduce((sum, item) => sum + item.quantity, 0);
+}
+
 function subtotal(items) {
   let sum = 0;
   for (const item of items) {
@@ -23,4 +27,4 @@ function total(items, discountRate) {
   return applyVat(applyDiscount(subtotal(items), discountRate || 0));
 }
 
-module.exports = { DEMO_CART, findItem, subtotal, total };
+module.exports = { DEMO_CART, findItem, itemCount, subtotal, total };
