@@ -1,5 +1,7 @@
 'use strict';
 
+// Regles de calcul des prix : TVA, arrondis et remises.
+
 const VAT_RATE = 0.196;
 
 function round2(value) {
@@ -14,4 +16,9 @@ function applyDiscount(amount, discountRate) {
   return amount - amount * discountRate;
 }
 
-module.exports = { VAT_RATE, round2, applyVat, applyDiscount };
+module.exports = {
+  VAT_RATE,
+  round2,
+  applyVat,
+  applyDiscount,
+};
