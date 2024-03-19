@@ -8,10 +8,10 @@ const HELP = [
   'shopctl - calcul de panier',
   '',
   'Commandes :',
-  ' total  affiche le total TTC du panier',
-  ' list  liste les articles du panier',
-  ' version  affiche la version courante',
-  ' help  affiche cette aide',
+  '  total     affiche le total TTC du panier',
+  '  list      liste les articles du panier',
+  '  version   affiche la version courante',
+  '  help      affiche cette aide',
 ].join('\n');
 
 function formatMoney(amount) {
