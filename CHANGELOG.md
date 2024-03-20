@@ -2,7 +2,9 @@
 
 ## [Non publie]
 
-- Ouverture du cycle 1.1.0.
+## [1.1.0]
+
+- Commandes list, version et help.
 - Recherche d article par sku.
 - Nombre d articles du panier.
 
