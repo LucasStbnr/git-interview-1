@@ -23,8 +23,13 @@ function subtotal(items) {
   return sum;
 }
 
+function summary(items) {
+  const topItem = items.reduce((a, b) => (a.unitPrice > b.unitPrice ? a : b));
+  return itemCount(items) + ' article(s), le plus cher : ' + topItem.label;
+}
+
 function total(items, discountRate) {
   return applyVat(applyDiscount(subtotal(items), discountRate || 0));
 }
 
-module.exports = { DEMO_CART, findItem, itemCount, subtotal, total };
+module.exports = { DEMO_CART, findItem, itemCount, subtotal, summary, total };

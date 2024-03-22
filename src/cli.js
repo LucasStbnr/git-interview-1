@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { DEMO_CART, total } = require('./cart');
+const { DEMO_CART, total, summary } = require('./cart');
 
 const HELP = [
   'shopctl - calcul de panier',
@@ -10,8 +10,12 @@ const HELP = [
   'Commandes :',
   '  total     affiche le total TTC du panier',
   '  list      liste les articles du panier',
+  '  summary   resume le panier',
   '  version   affiche la version courante',
   '  help      affiche cette aide',
+  '',
+  'Options :',
+  '  --empty   simule un panier vide',
 ].join('\n');
 
 function formatMoney(amount) {
@@ -23,13 +27,16 @@ function readVersion() {
 }
 
 const command = process.argv[2] || 'total';
+const cart = process.argv.includes('--empty') ? [] : DEMO_CART;
 
 if (command === 'total') {
-  console.log('Total TTC : ' + formatMoney(total(DEMO_CART)));
+  console.log('Total TTC : ' + formatMoney(total(cart)));
 } else if (command === 'list') {
-  DEMO_CART.forEach(function (item) {
+  cart.forEach(function (item) {
     console.log(item.sku + ' x' + item.quantity + ' - ' + item.label);
   });
+} else if (command === 'summary') {
+  console.log(summary(cart));
 } else if (command === 'version') {
   console.log('shopctl ' + readVersion());
 } else if (command === 'help') {
