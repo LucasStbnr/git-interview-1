@@ -4,8 +4,17 @@
 
 const VAT_RATE = 0.196;
 
+const PROMO_CODES = {
+  SUMMER20: 0.2,
+  BLACKFRIDAY: 0.7,
+};
+
 function round2(value) {
   return Math.round(value * 100) / 100;
+}
+
+function promoRate(code) {
+  return PROMO_CODES[code] || 0;
 }
 
 function applyVat(amountHt) {
@@ -18,7 +27,9 @@ function applyDiscount(amount, discountRate) {
 
 module.exports = {
   VAT_RATE,
+  PROMO_CODES,
   round2,
+  promoRate,
   applyVat,
   applyDiscount,
 };
