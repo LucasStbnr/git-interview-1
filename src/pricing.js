@@ -21,8 +21,9 @@ function applyVat(amountHt) {
   return round2(amountHt * (1 + VAT_RATE));
 }
 
-function applyDiscount(amount, discountRate) {
-  return amount - amount * discountRate;
+function applyDiscount(amount, discountRate, promoCode) {
+  const rate = discountRate + promoRate(promoCode);
+  return amount - amount * rate;
 }
 
 module.exports = {

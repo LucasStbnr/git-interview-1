@@ -15,7 +15,8 @@ const HELP = [
   '  help      affiche cette aide',
   '',
   'Options :',
-  '  --empty   simule un panier vide',
+  '  --empty          simule un panier vide',
+  '  --promo=CODE     applique un code promo',
 ].join('\n');
 
 function formatMoney(amount) {
@@ -26,11 +27,18 @@ function readVersion() {
   return fs.readFileSync(path.join(__dirname, '..', 'VERSION'), 'utf8').trim();
 }
 
+function readPromo() {
+  const arg = process.argv.find(function (value) {
+    return value.indexOf('--promo=') === 0;
+  });
+  return arg ? arg.split('=')[1] : null;
+}
+
 const command = process.argv[2] || 'total';
 const cart = process.argv.includes('--empty') ? [] : DEMO_CART;
 
 if (command === 'total') {
-  console.log('Total TTC : ' + formatMoney(total(cart)));
+  console.log('Total TTC : ' + formatMoney(total(cart, 0, readPromo())));
 } else if (command === 'list') {
   cart.forEach(function (item) {
     console.log(item.sku + ' x' + item.quantity + ' - ' + item.label);

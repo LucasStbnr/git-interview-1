@@ -28,8 +28,8 @@ function summary(items) {
   return itemCount(items) + ' article(s), le plus cher : ' + topItem.label;
 }
 
-function total(items, discountRate) {
-  return applyVat(applyDiscount(subtotal(items), discountRate || 0));
+function total(items, discountRate, promoCode) {
+  return applyVat(applyDiscount(subtotal(items), discountRate || 0, promoCode));
 }
 
 module.exports = { DEMO_CART, findItem, itemCount, subtotal, summary, total };
