@@ -12,8 +12,12 @@ function applyVat(amountHt) {
   return round2(amountHt * (1 + VAT_RATE));
 }
 
+// Une remise ne peut jamais depasser 50 pourcent du montant.
+const MAX_DISCOUNT_RATE = 0.5;
+
 function applyDiscount(amount, discountRate) {
-  return amount - amount * discountRate;
+  const rate = Math.min(discountRate, MAX_DISCOUNT_RATE);
+  return amount - amount * rate;
 }
 
 module.exports = {
